@@ -10,12 +10,18 @@ from voice_generator import creat_WAV, creat_WAV_2
 client = commands.Bot(command_prefix='!!')
 voice_client = None
 
-default_voice = 1
-CHANNEL_ID = 706813420137349153
-#CHANNEL_ID = 705731589128192032
-VCHA_ID = 706813420137349154
-#VCHA_ID = 705731589128192033
+with open("Bot_token.txt") as f:
+    token = f.read()
 
+with open("channel_id_mentaiko.txt") as f:
+    CHANNEL_ID = f.read()
+
+with open("vchannnel_id_mentaiko.txt") as f:
+    VCHA_ID = f.read()
+CHANNEL_ID = int(CHANNEL_ID)
+VCHA_ID = int(VCHA_ID)
+
+default_voice = 1
 
 @client.event
 async def on_ready():
@@ -91,4 +97,4 @@ async def on_message(message):
 
     
 
-client.run("ODYwODg5NzcxOTY2MzMyOTM4.YOB0FA.M9ylkrXcmu8G_EsUNLIGpSvDBY0")
+client.run(token)

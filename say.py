@@ -1,6 +1,8 @@
 import discord
 import ssl
-token = "ODYwODg5NzcxOTY2MzMyOTM4.YOB0FA.M9ylkrXcmu8G_EsUNLIGpSvDBY0"
+
+with open("Bot_token.txt") as f:
+    token = f.read()
 client = discord.Client()
 
 @client.event
