@@ -58,6 +58,7 @@ async def on_message(message):
         voice_client2 = message.guild.voice_client
         #vcha = client.get_channel(VCHA_ID)
         await message.guild.voice_client.disconnect()
+        exit()
     if message.content.startswith('%'):
         pass
 
@@ -66,6 +67,13 @@ async def on_message(message):
             default_voice = 2
         else:
             default_voice = 1
+    elif message.content[0:4] == 'http':
+        if default_voice == 1:
+            creat_WAV('ゆーあーるえる')
+        else :
+            creat_WAV_2('ゆーあーるえる')
+        source = discord.FFmpegPCMAudio("output.wav")
+        message.guild.voice_client.play(source)
     
     elif message.content == ".mute":
         if message.author.guild_permissions.administrator:
@@ -83,6 +91,7 @@ async def on_message(message):
             await message.channel.send("実行できません。")
     else:
         if message.guild.voice_client:
+            print(message.content[0:3])
             print(message.author)
             print(message.content)
             
